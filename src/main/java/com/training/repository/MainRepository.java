@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MainRepository extends CrudRepository<User, Integer> {
         User getUserById(Integer id);
+        User getUserByName(String name);
 }
