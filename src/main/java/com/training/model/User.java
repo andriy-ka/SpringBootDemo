@@ -10,6 +10,15 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(name = "username")
+    private String name;
+
+    @Column
+    private Integer age;
 
     public User() {
     }
@@ -19,14 +28,6 @@ public class User {
         this.name = name;
         this.age = age;
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @Column(name = "username")
-    private String name;
-    @Column
-    private Integer age;
 
     public Integer getId() {
         return id;
