@@ -44,7 +44,7 @@ public class MainControllerTest {
 
         when(mainRepositoryMock.getUserById(Mockito.anyInt())).thenReturn(user);
 
-        mockMvc.perform(get("/user?id={id}", String.valueOf(user.getId()))
+        mockMvc.perform(get("/main/user?id={id}", String.valueOf(user.getId()))
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
         )
@@ -59,7 +59,7 @@ public class MainControllerTest {
 
         when(mainRepositoryMock.findAll()).thenReturn(Collections.singletonList(user));
 
-        mockMvc.perform(get("/users")
+        mockMvc.perform(get("/main/users")
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
         )
@@ -72,7 +72,7 @@ public class MainControllerTest {
     @Test
     public void createUserTest() throws Exception {
 
-        mockMvc.perform(post("/create")
+        mockMvc.perform(post("/main/create")
                 .content(objMapper.writeValueAsString(user))
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .characterEncoding("UTF-8")
@@ -85,7 +85,7 @@ public class MainControllerTest {
 
     @Test
     public void updateUserTest() throws Exception {
-        mockMvc.perform(post("/update")
+        mockMvc.perform(post("/main/update")
                 .content(objMapper.writeValueAsString(user))
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .characterEncoding("UTF-8")
@@ -101,7 +101,7 @@ public class MainControllerTest {
 
         doNothing().when(mainRepositoryMock).deleteById(Mockito.anyInt());
 
-        mockMvc.perform(get("/delete/user?id={id}", 2)
+        mockMvc.perform(get("/main/delete/user?id={id}", 2)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8"))
                 .andExpect(status().isOk());
